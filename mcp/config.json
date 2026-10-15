@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "filingdelta": {
+      "type": "http",
+      "url": "https://filingdelta.xyz/mcp"
+    }
+  }
+}
