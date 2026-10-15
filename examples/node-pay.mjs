@@ -1,10 +1,11 @@
 // Minimal x402 client example for FilingDelta.
 // Pattern: wrap fetch with @x402/fetch so a 402 is paid and retried automatically.
-// Check the x402 docs (https://www.x402.org) for the current package names and API;
-// this follows the public @x402/fetch + @x402/evm pattern and may need small changes.
+// This file pays as soon as PRIVATE_KEY is set. It has no CONFIRM_PAY dry run
+// and does not read MAX_USD. @x402/fetch's default spend cap on this client is $1.
+// paid-call.ts is the capped dry-run client (EVM_PRIVATE_KEY, CONFIRM_PAY, $0.10).
 //
-//   npm install @x402/fetch @x402/evm viem
-//   PRIVATE_KEY=<your funded Base wallet key> node node-pay.mjs
+//   npm install
+//   PRIVATE_KEY=<your funded Base wallet key> node examples/node-pay.mjs
 //
 // Use a dedicated wallet holding a small amount of USDC on Base. Never commit a key.
 
