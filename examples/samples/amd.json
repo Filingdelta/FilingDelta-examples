@@ -1,0 +1,40 @@
+{
+    "ticker": "AMD",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/0000002488-26-000123-index.htm",
+    "company": "Advanced Micro Devices, Inc.",
+    "period": "Q2 FY2026",
+    "period_end": "2026-06-27",
+    "filing_type": "10-Q",
+    "filing_date": "2026-08-05",
+    "accession": "0000002488-26-000123",
+    "comparison_basis": "FREE SAMPLE, trimmed: 3 highest-materiality changes of 6 in the latest filing. The paid card has all 6 changes, each with a source line. year-ago quarter and prior disclosure set",
+    "changes": [
+        {
+            "id": 1,
+            "category": "segment",
+            "summary": "Data Center revenue $6,718 million vs $3,240 million a year ago (+107%). Segment is now 58% of company revenue.",
+            "materiality": "high",
+            "citation": "Q2 2026 10-Q segment note / earnings release; 58% share: 8-K Ex. 99.1, 4 Aug 2026",
+            "why_it_matters": "The business mix has shifted hard into AI/data center; company-level growth is no longer a client/gaming story."
+        },
+        {
+            "id": 2,
+            "category": "commitment",
+            "summary": "Unconditional commitments about $30.3 billion as of June 27, 2026, of which $17.4 billion is for the remainder of FY2026. Separate data-center lease guarantees of $4.1 billion.",
+            "materiality": "high",
+            "citation": "10-Q commitments / MD&A liquidity",
+            "why_it_matters": "Cash and supply obligations are now hyperscale-sized. This is a balance-sheet and execution risk as well as a demand signal."
+        },
+        {
+            "id": 3,
+            "category": "commitment",
+            "summary": "After quarter-end: investment commitments of up to $5.0 billion through FY2028 and long-term data-center leases with $9.5 billion of future payments commencing 2027-2028.",
+            "materiality": "high",
+            "citation": "10-Q subsequent events / commitments note",
+            "why_it_matters": "Material obligations sit after the printed quarter. The tables do not yet carry the full AI-ramp scaffolding."
+        }
+    ],
+    "new_material_items_count": 6,
+    "high_materiality_count": 4,
+    "generated_at": "2026-10-15T09:46:07.187Z"
+}

@@ -1,0 +1,34 @@
+{
+    "id": "CPI",
+    "indicator": "Consumer Price Index for All Urban Consumers (CPI-U)",
+    "agency": "U.S. Bureau of Labor Statistics",
+    "release_title": "Consumer Price Index - September 2026",
+    "release_number": "USDL-26-1574",
+    "reference_period": "September 2026",
+    "released": "2026-10-14",
+    "released_time": "08:30 ET (13:30 UK)",
+    "source_url": "https://www.bls.gov/news.release/cpi.nr0.htm",
+    "related_urls": [],
+    "next_release": {
+        "date": "2026-11-10",
+        "time": "08:30 ET (13:30 UK, GMT)",
+        "reference_period": "October 2026",
+        "source": "Stated in the September 2026 release: scheduled to be published on Tuesday, November 10, 2026, at 8:30 a.m. (ET)"
+    },
+    "comparison_basis": "FREE SAMPLE, trimmed: first 2 of 5 items in the latest release. The paid card has all 5 items, each a summary plus the verbatim quote. Monthly changes seasonally adjusted, September 2026 vs August 2026; 12-month changes not seasonally adjusted. No calculated figures.",
+    "items": [
+        {
+            "id": 1,
+            "summary": "CPI-U +0.6% in September (seasonally adjusted) after +0.4% in August; +3.7% over the 12 months ending September, up from 3.4% through August.",
+            "quote": "increased 0.6 percent on a seasonally adjusted basis in September after rising 0.4 percent in August; The all items index rose 3.7 percent for the 12 months ending September, a larger increase than the 3.4-percent increase reported for the 12 months ending in August",
+            "source": "CPI release text"
+        },
+        {
+            "id": 2,
+            "summary": "Core CPI (all items less food and energy) +0.3% in September, as in August; +2.6% over the year, after 2.4% over the 12 months ending August.",
+            "quote": "The index for all items less food and energy rose 0.3 percent in September, as it did in August; The all items less food and energy index rose 2.6 percent over the year, following a 2.4-percent increase over the 12 months ending August",
+            "source": "CPI release text"
+        }
+    ],
+    "generated_at": "2026-10-15T09:46:07.188Z"
+}
