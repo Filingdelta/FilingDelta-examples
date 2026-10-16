@@ -1,4 +1,4 @@
-/** Shared spend cap. MAX_USD defaults to $0.10 and cannot be set higher. */
+/** Shared spend cap. MAX_USD defaults to $0.10 and cannot be set higher. Live prices: https://filingdelta.xyz/catalog (single cards are $0.01-$0.02). */
 
 const USDC_ATOMIC_PER_DOLLAR = 1_000_000n;
 
