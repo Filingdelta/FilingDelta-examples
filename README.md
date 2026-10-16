@@ -1,6 +1,6 @@
 # filingdelta-examples
 
-**What changed in the filing, in one call. 10 cents, cited.**
+**What changed in the filing, in one call. Cited. Live prices: https://filingdelta.xyz/catalog**
 
 Example agent calls for [FilingDelta](https://filingdelta.xyz): free samples, one capped x402 paid call, an earnings watch and an MCP config. Payments are USDC on Base mainnet over [x402](https://github.com/coinbase/x402) v2.
 
@@ -35,7 +35,7 @@ Filing and macro samples are trimmed views of the latest card. On 15 Oct 2026 th
 
 ## Routes and prices
 
-Taken from the live [`/catalog`](https://filingdelta.xyz/catalog) (checked 15 Oct 2026). The catalog is the source of truth for ids; it grows over time. All routes run on Base mainnet (`eip155:8453`), with USDC, scheme `exact`.
+Prices are read from the `prices` map in the live [`/catalog`](https://filingdelta.xyz/catalog) (checked 16 Oct 2026); that is the source of truth for prices and ids; it grows over time. All routes run on Base mainnet (`eip155:8453`), with USDC, scheme `exact`.
 
 | Route | What | Price | Free sample |
 |---|---|---|---|
@@ -57,7 +57,7 @@ Free routes: `/catalog`, `/updates`, `/llms.txt`, `/openapi.json`, `/.well-known
 | `examples/paid-call.ts` | `paidCallOnce(path)` makes **one** capped paid call and never loops or retries. It is a dry run unless `CONFIRM_PAY=yes`. |
 | `examples/earnings-watch.ts` | Hashes free samples for `WATCH_TICKERS`, cross-checks them against `/catalog`, and pays for **at most one** changed card per run. |
 | `examples/x402terms.ts` | Reads the free 402 terms and accepts only scheme `exact`, Base USDC, FilingDelta's payTo, at or under the cap. |
-| `examples/budget.ts` | Shared spend cap: `MAX_USD`, with a hard ceiling of $0.10 per call. |
+| `examples/budget.ts` | Shared spend cap: `MAX_USD` (default $0.10), with a hard ceiling of $0.10 per call. That covers /delta, /policy, /macro and /cpi (live prices: https://filingdelta.xyz/catalog); the SEMIS bundle ($0.12) is above it. |
 | `examples/curl.md` | The unpaid 402 and a free sample call, including a decoded header captured 15 Oct 2026. |
 | `examples/node-pay.mjs` | Short `@x402/fetch` client. Uses `PRIVATE_KEY` (not `EVM_PRIVATE_KEY`) and pays the 402 immediately. No `CONFIRM_PAY` dry run and no `MAX_USD` check. The library default cap on that client is $1. |
 | `examples/samples/` | Free sample JSON captured 15 Oct 2026: `amd.json`, `macro-cpi.json`, `policy-boe.json`. |
@@ -123,7 +123,7 @@ From `.env.example`:
 |---|---|---|
 | `EVM_PRIVATE_KEY` | (empty) | Key for a fresh wallet holding only a few cents of USDC on Base. Must be `0x` plus 64 hex characters. Never commit it. Read by `paid-call.ts`. |
 | `CONFIRM_PAY` | `no` | Must be `yes` before any payment is made. |
-| `MAX_USD` | `0.10` | Per-call cap. Values above $0.10 are refused. |
+| `MAX_USD` | `0.10` | Per-call cap in USD. Values above $0.10 are refused. Single cards cost $0.01-$0.02 (live prices: https://filingdelta.xyz/catalog), so the default is well above any single card. |
 | `WATCH_TICKERS` | `AMD,NVDA,TSM` | Tickers for `npm run watch`. |
 | `FILINGDELTA_BASE` | `https://filingdelta.xyz` | API base URL. |
 
