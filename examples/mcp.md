@@ -9,7 +9,7 @@ Add it to an MCP client that supports remote HTTP servers using that URL. Check 
 
 Free: `list_filers`, `search_coverage`, `whats_new`, `sample_delta`, `sample_policy`, `sample_macro`, `request_data`.
 
-Paid (x402): `get_filing_delta`, `get_policy`, `get_macro`, `get_bundle`. Prices match the HTTP routes ($0.10 filing and policy cards, $0.05 macro, bundles as in /catalog).
+Paid (x402): `get_filing_delta`, `get_policy`, `get_macro`, `get_bundle`. Prices match the HTTP routes ($0.02 filing and policy cards, $0.01 macro and CPI, bundles as in /catalog).
 
 ## Paid calls
 

@@ -39,12 +39,12 @@ Taken from the live [`/catalog`](https://filingdelta.xyz/catalog) (checked 15 Oc
 
 | Route | What | Price | Free sample |
 |---|---|---|---|
-| `GET /delta/:ticker` | SEC filing-change card. AMD, MRVL, NVDA, AVGO, TSM, MU, AMAT, AAPL, MSFT, META, TSLA, ORCL, INTC, ASML, MSTR, JPM, BAC, GS, WFC | $0.10 | `/sample/:ticker` |
-| `GET /policy/:id` | Central-bank decision. BOE, FED, ECB, BOJ, RBA, BOC, SNB | $0.10 | `/sample/policy/:id` |
-| `GET /macro/:id` | US macro release. NFP, GDP, CPI | $0.05 | `/sample/macro/:id` |
-| `GET /cpi/US` | The same CPI card as `/macro/CPI`. US only, other ids return a free 404 | $0.05 | `/sample/macro/CPI` |
-| `GET /bundle/SEMIS` | AMD, MRVL, NVDA, AVGO, TSM, MU, AMAT, INTC, ASML (30% off the $0.90 total) | $0.63 | none |
-| `GET /bundle/CENTRALBANKS` | BOE, FED, ECB, BOJ, RBA, BOC, SNB (30% off the $0.70 total) | $0.49 | none |
+| `GET /delta/:ticker` | SEC filing-change card. AMD, MRVL, NVDA, AVGO, TSM, MU, AMAT, AAPL, MSFT, META, TSLA, ORCL, INTC, ASML, MSTR, JPM, BAC, GS, WFC | $0.02 | `/sample/:ticker` |
+| `GET /policy/:id` | Central-bank decision. BOE, FED, ECB, BOJ, RBA, BOC, SNB | $0.02 | `/sample/policy/:id` |
+| `GET /macro/:id` | US macro release. NFP, GDP, CPI | $0.01 | `/sample/macro/:id` |
+| `GET /cpi/US` | The same CPI card as `/macro/CPI`. US only, other ids return a free 404 | $0.01 | `/sample/macro/CPI` |
+| `GET /bundle/SEMIS` | AMD, MRVL, NVDA, AVGO, TSM, MU, AMAT, INTC, ASML (33% off the $0.18 total) | $0.12 | none |
+| `GET /bundle/CENTRALBANKS` | BOE, FED, ECB, BOJ, RBA, BOC, SNB (43% off the $0.14 total) | $0.08 | none |
 | `GET /sample/history/AMD` | Free filing-history sample, AMD only (other tickers return 404). No paid history route | free | itself |
 
 Free routes: `/catalog`, `/updates`, `/llms.txt`, `/openapi.json`, `/.well-known/x402`. Unknown ids return a free 404 before any payment. Ids are case-insensitive. `/catalog` lists a `content_hash` for every card.
@@ -150,19 +150,19 @@ The server is `filingdelta` v0.4.0, JSON-RPC 2.0 over **POST only** at `https://
 | `sample_policy` | free | Previous-meeting central-bank card |
 | `sample_macro` | free | Trimmed sample of the latest macro card (CPI, payrolls, GDP) |
 | `request_data` | free | Ask FilingDelta to add a ticker, bank or release |
-| `get_filing_delta` | $0.10 | SEC filing changes: what changed in a company's latest filing (10-Q, 10-K, 8-K, 6-K, earnings package). Paid |
-| `get_policy` | $0.10 | Central bank interest rate decision card (hike, hold or cut): BOE, FED, ECB, BOJ, RBA, BOC, SNB. Paid |
-| `get_macro` | $0.05 | US CPI inflation, nonfarm payrolls and GDP release cards with verbatim official figures. Paid |
-| `get_bundle` | $0.63 / $0.49 | SEMIS (the chip cards) or CENTRALBANKS (all central-bank cards), 30% off. Paid |
+| `get_filing_delta` | $0.02 | SEC filing changes: what changed in a company's latest filing (10-Q, 10-K, 8-K, 6-K, earnings package). Paid |
+| `get_policy` | $0.02 | Central bank interest rate decision card (hike, hold or cut): BOE, FED, ECB, BOJ, RBA, BOC, SNB. Paid |
+| `get_macro` | $0.01 | US CPI inflation, nonfarm payrolls and GDP release cards with verbatim official figures. Paid |
+| `get_bundle` | $0.12 / $0.08 | SEMIS (the chip cards) or CENTRALBANKS (all central-bank cards), discounted. Paid |
 
-An unpaid call to a paid tool returns a normal tool result with `isError: true` and the x402 PaymentRequired terms in `structuredContent` (a JSON copy is in `content[0].text`; it is the same object as the `PAYMENT-REQUIRED` header of the matching HTTP route). Retry the same `tools/call` with the PaymentPayload in `params._meta["x402/payment"]` (or the `PAYMENT-SIGNATURE` header). The receipt is in `result._meta["x402/payment-response"]`. See [llms.txt](https://filingdelta.xyz/llms.txt). These examples don't make paid MCP calls. Note that `get_bundle` costs more than the $0.10 cap in `budget.ts`.
+An unpaid call to a paid tool returns a normal tool result with `isError: true` and the x402 PaymentRequired terms in `structuredContent` (a JSON copy is in `content[0].text`; it is the same object as the `PAYMENT-REQUIRED` header of the matching HTTP route). Retry the same `tools/call` with the PaymentPayload in `params._meta["x402/payment"]` (or the `PAYMENT-SIGNATURE` header). The receipt is in `result._meta["x402/payment-response"]`. See [llms.txt](https://filingdelta.xyz/llms.txt). These examples don't make paid MCP calls. Note that the SEMIS bundle ($0.12) costs more than the $0.10 cap in `budget.ts`.
 
 The free sample tools return the labelled sample described above: `sample_delta` and `sample_macro` are trimmed, and `sample_policy` is the previous meeting. [examples/mcp.md](examples/mcp.md) has the same tool names and a `tools/list` curl.
 
 ## Safety notes
 
 - **One call at a time.** `paid-call.ts` makes exactly one paid request and never retries. `earnings-watch.ts` pays for at most one card per run. Don't wrap either in a loop.
-- **Spend cap.** `budget.ts` refuses a `MAX_USD` above $0.10, and `x402terms.ts` refuses any option above the cap, on another network or asset, or to a different payTo. The bundles ($0.63 and $0.49) sit above the cap, so these examples refuse them by design.
+- **Spend cap.** `budget.ts` refuses a `MAX_USD` above $0.10, and `x402terms.ts` refuses any option above the cap, on another network or asset, or to a different payTo. The SEMIS bundle ($0.12) sits above the cap, so these examples refuse it by design.
 - **Dry run by default.** Nothing is paid unless `CONFIRM_PAY=yes`. `examples/node-pay.mjs` is the exception: it pays as soon as `PRIVATE_KEY` is set, and it does not use this cap.
 - **Check before paying again.** Compare `content_hash` (free in `/catalog`) with the card you already have.
 - **Mainnet only.** FilingDelta has no testnet route. Use a fresh, low-balance wallet. To practise x402 on testnet, use the coinbase/x402 examples.
