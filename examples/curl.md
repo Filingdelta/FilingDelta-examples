@@ -50,7 +50,7 @@ The sample is a labelled, trimmed example; the paid card has every change.
 curl -s https://filingdelta.xyz/sample/AMD
 ```
 
-Trimmed output (full file in [samples/amd.json](samples/amd.json)):
+Trimmed output (captured 2026-10-17; full file in [samples/amd.json](samples/amd.json)):
 
 ```json
 {
@@ -62,20 +62,20 @@ Trimmed output (full file in [samples/amd.json](samples/amd.json)):
   "filing_type": "10-Q",
   "filing_date": "2026-08-05",
   "accession": "0000002488-26-000123",
-  "comparison_basis": "FREE SAMPLE, trimmed: 3 highest-materiality changes of 6 in the latest filing. The paid card has all 6 changes, each with a source line. year-ago quarter and prior disclosure set",
+  "comparison_basis": "FREE SAMPLE, trimmed: 3 highest-materiality changes of 6 in the latest filing. The paid card has all 6 changes, each with a source line. Compared with: year-ago quarter and prior disclosure set.",
   "changes": [
     {
       "id": 1,
       "category": "segment",
       "summary": "Data Center revenue $6,718 million vs $3,240 million a year ago (+107%). Segment is now 58% of company revenue.",
       "materiality": "high",
-      "citation": "Q2 2026 10-Q segment note / earnings release; 58% share: 8-K Ex. 99.1, 4 Aug 2026",
+      "citation": "Q2 2026 10-Q (acc. 0000002488-26-000123), Part I Item 2 MD&A, segment net revenue table and Data Center discussion; 58% share calculated from the same table (6,718 / 11,536)",
       "why_it_matters": "The business mix has shifted hard into AI/data center; company-level growth is no longer a client/gaming story."
     }
   ],
   "new_material_items_count": 6,
   "high_materiality_count": 4,
-  "generated_at": "2026-10-15T09:46:07.187Z"
+  "generated_at": "2026-10-17T11:32:50.296Z"
 }
 ```
 
