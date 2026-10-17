@@ -8,7 +8,7 @@ Example agent calls for [FilingDelta](https://filingdelta.xyz): free samples, on
 
 A card is one JSON object listing the material changes in a company's latest SEC filing, a central-bank decision or a US macro release. Each change has a materiality rating, a citation and a "why it matters" line. `source_url` points at the filing.
 
-Excerpt from the free `GET https://filingdelta.xyz/sample/AMD` (checked 15 Oct 2026, cut for length):
+Excerpt from the free `GET https://filingdelta.xyz/sample/AMD` (fetched and checked 17 Oct 2026, cut for length):
 
 ```json
 {
@@ -24,18 +24,18 @@ Excerpt from the free `GET https://filingdelta.xyz/sample/AMD` (checked 15 Oct 2
       "category": "segment",
       "summary": "Data Center revenue $6,718 million vs $3,240 million a year ago (+107%). Segment is now 58% of company revenue.",
       "materiality": "high",
-      "citation": "Q2 2026 10-Q segment note / earnings release; 58% share: 8-K Ex. 99.1, 4 Aug 2026",
+      "citation": "Q2 2026 10-Q (acc. 0000002488-26-000123), Part I Item 2 MD&A, segment net revenue table and Data Center discussion; 58% share calculated from the same table (6,718 / 11,536)",
       "why_it_matters": "The business mix has shifted hard into AI/data center; company-level growth is no longer a client/gaming story."
     }
   ]
 }
 ```
 
-Filing and macro samples are trimmed views of the latest card. On 15 Oct 2026 the AMD sample's `comparison_basis` said it keeps the 3 highest-materiality changes of 6, and that the paid card has all 6. Policy samples are the previous meeting's card. `examples/samples/` holds those free responses as captured earlier that day; a same-day check still matched every field except `generated_at`. See [examples/curl.md](examples/curl.md) for a longer AMD excerpt and a decoded 402. Cards summarise filings and are not investment advice.
+Filing and macro samples are trimmed views of the latest card. The AMD sample's `comparison_basis` says it keeps the 3 highest-materiality changes of 6, and that the paid card has all 6 (checked 17 Oct 2026). Policy samples are the previous meeting's card. `examples/samples/amd.json` was re-captured from the live sample on 17 Oct 2026; `macro-cpi.json` and `policy-boe.json` were captured on 15 Oct 2026 (`macro-cpi.json` re-checked against the live sample on 17 Oct, matching except `generated_at`). See [examples/curl.md](examples/curl.md) for a longer AMD excerpt and a decoded 402. Cards summarise filings and are not investment advice.
 
 ## Routes and prices
 
-Prices are read from the `prices` map in the live [`/catalog`](https://filingdelta.xyz/catalog) (checked 16 Oct 2026); that is the source of truth for prices and ids; it grows over time. All routes run on Base mainnet (`eip155:8453`), with USDC, scheme `exact`.
+Prices are read from the `prices` map in the live [`/catalog`](https://filingdelta.xyz/catalog) (checked 17 Oct 2026); that is the source of truth for prices and ids; it grows over time. All routes run on Base mainnet (`eip155:8453`), with USDC, scheme `exact`.
 
 | Route | What | Price | Free sample |
 |---|---|---|---|
@@ -58,9 +58,9 @@ Free routes: `/catalog`, `/updates`, `/llms.txt`, `/openapi.json`, `/.well-known
 | `examples/earnings-watch.ts` | Hashes free samples for `WATCH_TICKERS`, cross-checks them against `/catalog`, and pays for **at most one** changed card per run. |
 | `examples/x402terms.ts` | Reads the free 402 terms and accepts only scheme `exact`, Base USDC, FilingDelta's payTo, at or under the cap. |
 | `examples/budget.ts` | Shared spend cap: `MAX_USD` (default $0.10), with a hard ceiling of $0.10 per call. That covers /delta, /policy, /macro and /cpi (live prices: https://filingdelta.xyz/catalog); the SEMIS bundle ($0.12) is above it. |
-| `examples/curl.md` | The unpaid 402 and a free sample call, including a decoded header captured 15 Oct 2026. |
+| `examples/curl.md` | The unpaid 402 and a free sample call, including a decoded header captured 15 Oct 2026 and re-checked against the live 402 on 17 Oct 2026. |
 | `examples/node-pay.mjs` | Short `@x402/fetch` client. Uses `PRIVATE_KEY` (not `EVM_PRIVATE_KEY`) and pays the 402 immediately. No `CONFIRM_PAY` dry run and no `MAX_USD` check. The library default cap on that client is $1. |
-| `examples/samples/` | Free sample JSON captured 15 Oct 2026: `amd.json`, `macro-cpi.json`, `policy-boe.json`. |
+| `examples/samples/` | Free sample JSON: `amd.json` (captured 17 Oct 2026), `macro-cpi.json` and `policy-boe.json` (captured 15 Oct 2026). |
 | `examples/mcp.md` | MCP endpoint, tool names, and a `tools/list` curl. |
 | `mcp/config.json` | MCP client config for `https://filingdelta.xyz/mcp`. |
 | `.env.example` | Environment variables (see below). |
