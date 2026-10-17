@@ -40,7 +40,7 @@ Prices are read from the `prices` map in the live [`/catalog`](https://filingdel
 | Route | What | Price | Free sample |
 |---|---|---|---|
 | `GET /delta/:ticker` | SEC filing-change card. AMD, MRVL, NVDA, AVGO, TSM, MU, AMAT, AAPL, MSFT, META, TSLA, ORCL, INTC, ASML, MSTR, JPM, BAC, GS, WFC | $0.02 | `/sample/:ticker` |
-| `GET /policy/:id` | Central-bank decision. BOE, FED, ECB, BOJ, RBA, BOC, SNB | $0.02 | `/sample/policy/:id` |
+| `GET /policy/:id` | Central-bank decision. BOE, FED, ECB, BOJ, RBA, BOC, SNB, NOR, SWE | $0.02 | `/sample/policy/:id` |
 | `GET /macro/:id` | US macro release. NFP, GDP, CPI | $0.01 | `/sample/macro/:id` |
 | `GET /cpi/US` | The same CPI card as `/macro/CPI`. US only, other ids return a free 404 | $0.01 | `/sample/macro/CPI` |
 | `GET /bundle/SEMIS` | AMD, MRVL, NVDA, AVGO, TSM, MU, AMAT, INTC, ASML (33% off the $0.18 total) | $0.12 | none |
@@ -151,9 +151,9 @@ The server is `filingdelta` v0.4.0, JSON-RPC 2.0 over **POST only** at `https://
 | `sample_macro` | free | Trimmed sample of the latest macro card (CPI, payrolls, GDP) |
 | `request_data` | free | Ask FilingDelta to add a ticker, bank or release |
 | `get_filing_delta` | $0.02 | SEC filing changes: what changed in a company's latest filing (10-Q, 10-K, 8-K, 6-K, earnings package). Paid |
-| `get_policy` | $0.02 | Central bank interest rate decision card (hike, hold or cut): BOE, FED, ECB, BOJ, RBA, BOC, SNB. Paid |
+| `get_policy` | $0.02 | Central bank interest rate decision card (hike, hold or cut): BOE, FED, ECB, BOJ, RBA, BOC, SNB, NOR, SWE. Paid |
 | `get_macro` | $0.01 | US CPI inflation, nonfarm payrolls and GDP release cards with verbatim official figures. Paid |
-| `get_bundle` | $0.12 / $0.08 | SEMIS (the chip cards) or CENTRALBANKS (all central-bank cards), discounted. Paid |
+| `get_bundle` | $0.12 / $0.08 | SEMIS (the chip cards) or CENTRALBANKS (the 7 cards BOE, FED, ECB, BOJ, RBA, BOC, SNB), discounted. Paid |
 
 An unpaid call to a paid tool returns a normal tool result with `isError: true` and the x402 PaymentRequired terms in `structuredContent` (a JSON copy is in `content[0].text`; it is the same object as the `PAYMENT-REQUIRED` header of the matching HTTP route). Retry the same `tools/call` with the PaymentPayload in `params._meta["x402/payment"]` (or the `PAYMENT-SIGNATURE` header). The receipt is in `result._meta["x402/payment-response"]`. See [llms.txt](https://filingdelta.xyz/llms.txt). These examples don't make paid MCP calls. Note that the SEMIS bundle ($0.12) costs more than the $0.10 cap in `budget.ts`.
 
