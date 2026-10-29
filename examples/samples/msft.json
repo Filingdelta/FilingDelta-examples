@@ -1,0 +1,107 @@
+{
+    "ticker": "MSFT",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/0001193125-26-436133-index.htm",
+    "company": "Microsoft Corporation",
+    "period": "Q1 FY2027",
+    "period_end": "2026-09-30",
+    "filing_type": "10-Q",
+    "filing_date": "2026-10-28",
+    "accession": "0001193125-26-436133",
+    "comparison_basis": "FREE SAMPLE: one change in full (item 3, as in the paid card, with the disclaimer moved to the card-level disclaimer field), the others as teasers with category, section and materiality, plus direction, a size bucket and magnitude_basis where the paid card's own figures give them. The paid card has every change in full, each with figures and a source line.",
+    "changes": [
+        {
+            "id": 1,
+            "access": "teaser",
+            "category": "segment",
+            "direction": "increase",
+            "magnitude": "$5B-$25B",
+            "magnitude_basis": "prior_period_pair",
+            "section": "10-Q Item 2, Segment Results of Operations",
+            "materiality": "high"
+        },
+        {
+            "id": 2,
+            "access": "teaser",
+            "category": "segment",
+            "direction": "increase",
+            "magnitude": "$5B-$25B",
+            "magnitude_basis": "prior_period_pair",
+            "section": "10-Q Item 2, Summary Results of Operations and Segment Results of Operations",
+            "materiality": "high"
+        },
+        {
+            "id": 3,
+            "category": "other",
+            "summary": "Gross margin $62,559 million vs $53,630 million (+17%). Gross margin percentage 67.8% vs 69.0% (calculated from filing figures); Microsoft Cloud gross margin percentage decreased to 66% \"driven by sales mix shift to Azure, offset in part by product-level margin improvements, primarily in Azure\".",
+            "materiality": "medium",
+            "citation": "Q1 FY27 10-Q Item 2, Summary Results of Operations; Item 1, Income Statements",
+            "why_it_matters": "Margin percentage keeps slipping as lower-margin Azure capacity grows faster than the rest.",
+            "access": "full"
+        },
+        {
+            "id": 4,
+            "access": "teaser",
+            "category": "commitment",
+            "direction": "increase",
+            "magnitude": "$5B-$25B",
+            "magnitude_basis": "prior_period_pair",
+            "section": "10-Q Item 1, Cash Flows Statements",
+            "materiality": "high"
+        },
+        {
+            "id": 5,
+            "access": "teaser",
+            "category": "other",
+            "section": "10-Q Item 1, Note 1 Accounting Policies (Investments) and Note 3 Other Income (Expense), Net",
+            "materiality": "high"
+        },
+        {
+            "id": 6,
+            "access": "teaser",
+            "category": "commitment",
+            "section": "10-Q Item 1, Notes to Financial Statements (Share Repurchases)",
+            "materiality": "medium"
+        },
+        {
+            "id": 7,
+            "access": "teaser",
+            "category": "other",
+            "direction": "decrease",
+            "magnitude": "$1B-$5B",
+            "magnitude_basis": "prior_period_pair",
+            "section": "10-Q Item 1, Note 9 Debt",
+            "materiality": "medium"
+        },
+        {
+            "id": 8,
+            "access": "teaser",
+            "category": "commitment",
+            "direction": "increase",
+            "magnitude": "50-100%",
+            "magnitude_basis": "stated_yoy_change",
+            "section": "10-Q Item 2, Overview highlights",
+            "materiality": "high"
+        }
+    ],
+    "new_material_items_count": 8,
+    "high_materiality_count": 5,
+    "generated_at": "2026-10-29T19:06:02.093Z",
+    "access": "teaser",
+    "gated_fields": [
+        "changes[].summary",
+        "changes[].citation",
+        "changes[].why_it_matters"
+    ],
+    "hidden": {
+        "changes": 7,
+        "high_materiality": 5
+    },
+    "buy_with": {
+        "tool": "get_filing_delta",
+        "args": {
+            "ticker": "MSFT"
+        },
+        "price_usd": 0.01
+    },
+    "disclaimer": "Not investment advice."
+}

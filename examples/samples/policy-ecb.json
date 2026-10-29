@@ -1,0 +1,37 @@
+{
+    "id": "ECB",
+    "institution": "European Central Bank",
+    "body": "Governing Council",
+    "card_type": "rate_decision",
+    "decision": "hike",
+    "bank_rate": 2.5,
+    "bank_rate_unit": "percent",
+    "previous_bank_rate": 2.25,
+    "change_bps": 25,
+    "vote": null,
+    "dissent": null,
+    "meeting_ended": "2026-09-10",
+    "published": "2026-09-10",
+    "next_decision": "2026-10-29",
+    "inflation": null,
+    "inflation_target": 2,
+    "summary": "Governing Council decided to 'raise the three key ECB interest rates by 25 basis points': deposit facility 2.50%, main refinancing operations 2.65%, marginal lending facility 2.90%, with effect from 16 September 2026. bank_rate and previous_bank_rate show the deposit facility rate; the previous 2.25% (in effect from 17 June 2026) is taken from the ECB key interest rates table (https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html), not from the release. Release: the conflict in the Middle East 'continues to generate inflation pressures', and 'inflation is set to remain well above target for an extended period'. September 2026 ECB staff projections: headline inflation 3.0% (2026), 2.5% (2027), 2.1% (2028); inflation excluding energy and food 2.5%, 2.6%, 2.3%; GDP growth 0.9%, 1.4%, 1.5%. 2026 inflation unchanged from June; 2027 and 2028 revised up. The ECB's 10 September 2026 monetary policy decision press release does not publish a vote, so vote and dissent are null. It gives staff projections (\"The baseline of the new ECB staff projections sees headline inflation averaging 3.0% in 2026, 2.5% in 2027 and 2.1% in 2028.\") but no current inflation figure, so inflation is null.",
+    "why_it_matters": "The release says the decision 'underscores the Governing Council’s commitment to setting monetary policy to ensure that inflation stabilises at its 2% target in the medium term'. It sees 'risks to the upside for inflation and to the downside for economic growth'. The Governing Council will follow a 'data-dependent and meeting-by-meeting' approach and is 'not pre-committing to a particular rate path'.",
+    "source_url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html",
+    "generated_at": "2026-10-29T19:06:02.094Z",
+    "access": "full",
+    "sample_of": "previous_meeting",
+    "latest": {
+        "meeting_date": "2026-10-29",
+        "access": "paid",
+        "content_hash": "b02c7e1d11c0",
+        "buy_with": {
+            "tool": "get_policy",
+            "args": {
+                "id": "ECB"
+            },
+            "price_usd": 0.02
+        }
+    },
+    "disclaimer": "Not investment advice."
+}

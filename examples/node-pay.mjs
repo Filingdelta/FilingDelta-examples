@@ -25,7 +25,7 @@ registerExactEvmScheme(client, { signer });
 
 const fetchWithPayment = wrapFetchWithPayment(fetch, client);
 
-// $0.02 USDC on Base. Replace AMD with any ticker in https://filingdelta.xyz/catalog
+// Paid in USDC on Base (price: https://filingdelta.xyz/catalog). Replace AMD with any ticker in https://filingdelta.xyz/catalog
 const res = await fetchWithPayment("https://filingdelta.xyz/delta/AMD");
 console.log(res.status);
 console.log(JSON.stringify(await res.json(), null, 2));
