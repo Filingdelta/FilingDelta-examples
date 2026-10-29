@@ -7,7 +7,7 @@
     "filing_type": "10-Q",
     "filing_date": "2026-08-05",
     "accession": "0000002488-26-000123",
-    "comparison_basis": "FREE SAMPLE, trimmed: 3 highest-materiality changes of 6 in the latest filing. The paid card has all 6 changes, each with a source line. Compared with: year-ago quarter and prior disclosure set.",
+    "comparison_basis": "FREE SAMPLE: one change in full (item 1, as in the paid card, with the disclaimer moved to the card-level disclaimer field), the others as teasers with category, section and materiality, plus direction, a size bucket and magnitude_basis where the paid card's own figures give them. The paid card has every change in full, each with figures and a source line.",
     "changes": [
         {
             "id": 1,
@@ -15,26 +15,73 @@
             "summary": "Data Center revenue $6,718 million vs $3,240 million a year ago (+107%). Segment is now 58% of company revenue.",
             "materiality": "high",
             "citation": "Q2 2026 10-Q (acc. 0000002488-26-000123), Part I Item 2 MD&A, segment net revenue table and Data Center discussion; 58% share calculated from the same table (6,718 / 11,536)",
-            "why_it_matters": "The business mix has shifted hard into AI/data center; company-level growth is no longer a client/gaming story."
+            "why_it_matters": "The business mix has shifted hard into AI/data center; company-level growth is no longer a client/gaming story.",
+            "access": "full"
         },
         {
             "id": 2,
+            "access": "teaser",
             "category": "commitment",
-            "summary": "Unconditional commitments about $30.3 billion as of June 27, 2026, of which $17.4 billion is for the remainder of FY2026. Separate data-center lease guarantees of $4.1 billion.",
-            "materiality": "high",
-            "citation": "10-Q commitments / MD&A liquidity",
-            "why_it_matters": "Cash and supply obligations are now hyperscale-sized. This is a balance-sheet and execution risk as well as a demand signal."
+            "magnitude": ">$25B",
+            "magnitude_basis": "largest_figure",
+            "section": "10-Q commitments / MD&A liquidity",
+            "materiality": "high"
         },
         {
             "id": 3,
+            "access": "teaser",
             "category": "commitment",
-            "summary": "After quarter-end: investment commitments of up to $5.0 billion through FY2028 and long-term data-center leases with $9.5 billion of future payments commencing 2027-2028.",
-            "materiality": "high",
-            "citation": "10-Q subsequent events / commitments note",
-            "why_it_matters": "Material obligations sit after the printed quarter. The tables do not yet carry the full AI-ramp scaffolding."
+            "magnitude": "$5B-$25B",
+            "magnitude_basis": "largest_figure",
+            "section": "10-Q subsequent events / commitments note",
+            "materiality": "high"
+        },
+        {
+            "id": 4,
+            "access": "teaser",
+            "category": "other",
+            "section": "10-Q MD&A / warrants disclosure",
+            "materiality": "high"
+        },
+        {
+            "id": 5,
+            "access": "teaser",
+            "category": "one_time",
+            "magnitude": "$100M-$1B",
+            "magnitude_basis": "single_level",
+            "section": "8-K Exhibit 99.1",
+            "materiality": "medium"
+        },
+        {
+            "id": 6,
+            "access": "teaser",
+            "category": "commitment",
+            "magnitude": "$1B-$5B",
+            "magnitude_basis": "largest_figure",
+            "direction": "new",
+            "section": "8-K, Items 1.01 and 2.03",
+            "materiality": "medium"
         }
     ],
     "new_material_items_count": 6,
     "high_materiality_count": 4,
-    "generated_at": "2026-10-17T11:32:50.296Z"
+    "generated_at": "2026-10-29T19:06:02.093Z",
+    "access": "teaser",
+    "gated_fields": [
+        "changes[].summary",
+        "changes[].citation",
+        "changes[].why_it_matters"
+    ],
+    "hidden": {
+        "changes": 5,
+        "high_materiality": 3
+    },
+    "buy_with": {
+        "tool": "get_filing_delta",
+        "args": {
+            "ticker": "AMD"
+        },
+        "price_usd": 0.01
+    },
+    "disclaimer": "Not investment advice."
 }
