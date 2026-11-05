@@ -1,9 +1,15 @@
 # Using FilingDelta over MCP
 
-- Registry name: `xyz.filingdelta/filingdelta`
-- Endpoint: `https://filingdelta.xyz/mcp` (JSON-RPC 2.0 over HTTP POST)
+Checked 5 Nov 2026:
 
-Add it to an MCP client that supports remote HTTP servers using that URL. Check your client's docs for the exact config format.
+- Registry name: `xyz.filingdelta/filingdelta` (`GET /mcp/server-card`)
+- Endpoint: `https://filingdelta.xyz/mcp`, JSON-RPC 2.0 over HTTP POST. A GET of that URL returns 405.
+- Server card remote type: `streamable-http`. `initialize` reported protocol `2025-11-25` and server version `0.5.0` (`serverInfo.name`: `filingdelta`).
+
+Copy-paste client setup is in the README under "MCP".
+
+- Cursor: a remote `url` in `mcp.json` (https://cursor.com/docs/mcp). No local process.
+- Claude Desktop: paste `https://filingdelta.xyz/mcp` as a custom connector (Customize → Connectors → Add → Custom → Web). `claude_desktop_config.json` is for local stdio servers, so that file needs the `npx mcp-remote` bridge with `--transport http-only` (Node.js 18+). The server does not use OAuth.
 
 ## Tools (from `tools/list`)
 
