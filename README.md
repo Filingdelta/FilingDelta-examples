@@ -2,6 +2,8 @@
 
 **Cited JSON cards on what changed in SEC filings and central-bank decisions.**
 
+https://filingdelta.xyz
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![filingdelta.xyz](https://img.shields.io/badge/site-filingdelta.xyz-111111)](https://filingdelta.xyz)
@@ -12,7 +14,7 @@ FilingDelta cards are informational and educational summaries of published docum
 
 ## Quick start (no wallet)
 
-`GET https://filingdelta.xyz/sample/{ticker}` returns a labelled free sample for a ticker in the catalog. Checked 5 Nov 2026: `curl -s` returns HTTP 200 and one JSON object. It is printed compact; the object below is that response, pretty-printed. `generated_at` on this fetch was `2026-11-04T23:56:07.596Z`. A second GET in the same session returned the same value.
+`GET /sample/{ticker}` returns a labelled free sample for one of the 28 SEC-filing tickers in the [catalog](https://filingdelta.xyz/catalog). Checked 5 Nov 2026: `curl -s` of [sample/AAPL](https://filingdelta.xyz/sample/AAPL) returns HTTP 200 and one JSON object. It is printed compact; the object below is that response, pretty-printed. `generated_at` on this fetch was `2026-11-04T23:56:07.596Z`. A second GET in the same session returned the same value.
 
 ```bash
 curl -s https://filingdelta.xyz/sample/AAPL
@@ -162,7 +164,7 @@ Not investment advice.
 
 The JSON after that blank line was the object in the quick start above, including the same `generated_at`.
 
-`python3 fd_sample.py --list` reads the `filers` array. Output on 5 Nov 2026:
+`python3 fd_sample.py --list` reads the `filers` array (28 SEC-filing tickers, including TSM and ASML). Output on 5 Nov 2026:
 
 ```text
 28 tickers from https://filingdelta.xyz/catalog (filers):
@@ -315,7 +317,7 @@ Checked 5 Nov 2026: `/llms.txt`, `/catalog` and `/openapi.json` each returned HT
 - [allagents.app listing](https://allagents.app/agent/filingdelta)
 - x402: https://github.com/coinbase/x402
 
-On that catalog fetch, `filers` had 28 tickers (the `--list` output above), `policy` had 22 ids, and `macro` was `NFP`, `GDP`, `CPI`. [llms.txt](https://filingdelta.xyz/llms.txt) says the same: SEC filings for 28 tickers at $0.05 USDC, and 22 central banks at $0.05 USDC.
+On that catalog fetch, `filers` had 28 SEC-filing tickers, including TSM and ASML (the `--list` output above), `policy` had 22 ids, and `macro` was `NFP`, `GDP`, `CPI`. [llms.txt](https://filingdelta.xyz/llms.txt) says the same count in its own words: "SEC filings for 28 tickers" at $0.05 USDC, and 22 central banks at $0.05 USDC.
 
 ## What is a card?
 
@@ -323,7 +325,7 @@ A card is one JSON object listing the material changes in a company's latest SEC
 
 The AAPL object in the quick start is a current free sample. Free samples are labelled and are not the full card. Filing samples show one change in full and the rest as teasers (`access: "teaser"`) with category, section and materiality, plus `direction`, a `magnitude` size bucket and `magnitude_basis` (for example `largest_figure` or `prior_period_pair`) where the paid card's figures give them; `hidden` counts what is gated. Macro samples are headline only (`items_hidden` counts the rest). Policy samples are the previous meeting's full card (`sample_of: "previous_meeting"`) plus a `latest` object with only the latest meeting date, `access: "paid"`, its `content_hash` and `buy_with`. How cards are built: [/methodology](https://filingdelta.xyz/methodology).
 
-The files in `examples/samples/` were captured from the live free samples on 29 Oct 2026. See [examples/samples/README.md](examples/samples/README.md). Excerpt from the stored `GET https://filingdelta.xyz/sample/AMD` (fetched 29 Oct 2026, cut to the one change that sample showed in full). `/catalog` on 5 Nov 2026 lists AMD `filing_date` `2026-11-04` (10-Q, accession `0000002488-26-000191`), so this excerpt is the stored capture, not the current AMD card. Fetch `GET /sample/AMD` for the current sample.
+The files in `examples/samples/` were captured from the live free samples on 29 Oct 2026. See [examples/samples/README.md](examples/samples/README.md). Excerpt from the stored `GET https://filingdelta.xyz/sample/AMD` (fetched 29 Oct 2026, cut to the one change that sample showed in full). [/catalog](https://filingdelta.xyz/catalog) on 5 Nov 2026 lists AMD `filing_date` `2026-11-04` (10-Q, accession `0000002488-26-000191`), so this excerpt is the stored capture, not the current AMD card. Fetch [sample/AMD](https://filingdelta.xyz/sample/AMD) for the current sample.
 
 ```json
 {
