@@ -1,6 +1,6 @@
 # Free sample captures
 
-Each file is a free `GET` of a FilingDelta sample route, captured on 2026-10-29 at about 19:52 UK (GMT) (`policy-fed.json` at about 20:42 UK) with HTTP 200, pretty-printed with 4-space indents. Apart from formatting, the content is exactly what was served. Samples are labelled teasers or previous-meeting cards, not paid cards. `generated_at` changes on every request.
+Each file is a free `GET` of a FilingDelta sample route, captured on 2026-10-29 at about 19:52 UK (GMT) (`policy-fed.json` at about 20:42 UK) with HTTP 200, pretty-printed with 4-space indents. Apart from formatting, the content is exactly what was served. Samples are labelled teasers or previous-meeting cards, not paid cards. On this 29 Oct 2026 capture, `generated_at` differed from one request to the next. Two GETs of `/sample/AAPL` on 5 Nov 2026 returned the same `generated_at` (`2026-11-04T23:56:07.596Z`).
 
 | File | Route | Shape |
 |---|---|---|
